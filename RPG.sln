@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGEngine", "RPGEngine\RPGEngine.csproj", "{C18A84A0-D6D5-4976-89F8-B36190D5B914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTests", "EngineTests\EngineTests.csproj", "{2C9A6A5C-1A7C-46E9-9F77-C54B7BDFED69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor", "Editor\Editor.csproj", "{A97658E0-110A-4DB8-B861-E8EE7414FD5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weighted Randomizer", "Weighted Randomizer\Weighted Randomizer.csproj", "{1245BC96-2F42-404C-9F11-65A4326299D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C18A84A0-D6D5-4976-89F8-B36190D5B914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18A84A0-D6D5-4976-89F8-B36190D5B914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18A84A0-D6D5-4976-89F8-B36190D5B914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18A84A0-D6D5-4976-89F8-B36190D5B914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C9A6A5C-1A7C-46E9-9F77-C54B7BDFED69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C9A6A5C-1A7C-46E9-9F77-C54B7BDFED69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C9A6A5C-1A7C-46E9-9F77-C54B7BDFED69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C9A6A5C-1A7C-46E9-9F77-C54B7BDFED69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97658E0-110A-4DB8-B861-E8EE7414FD5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97658E0-110A-4DB8-B861-E8EE7414FD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97658E0-110A-4DB8-B861-E8EE7414FD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97658E0-110A-4DB8-B861-E8EE7414FD5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1245BC96-2F42-404C-9F11-65A4326299D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1245BC96-2F42-404C-9F11-65A4326299D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1245BC96-2F42-404C-9F11-65A4326299D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1245BC96-2F42-404C-9F11-65A4326299D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
