@@ -14,8 +14,8 @@ namespace RPGEngine
     /// Methods for reading/writing json data for the game
     /// </summary>
     public static class JsonHelpers
-    {
-        public const string dataPath = @"C:\Users\shelms\documents\visual studio 2015\Projects\RPGEngine\RPGEngine\Data\";        
+    {        
+        private const string dataPath = @"../../..\RPGEngine\Data\";
 
         public static List<T> ReadFileToList<T>(this string fileName)
         {

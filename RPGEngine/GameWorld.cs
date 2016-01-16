@@ -61,10 +61,6 @@ namespace RPGEngine
         internal const double MAX_LIFE_PER_HIT = 0.1;
         internal const double MAX_LIFE_PER_SEC = 0.1;
 
-        
-        private const string _path = @"C:\Users\shelms\documents\visual studio 2015\Projects\RPGEngine\RPGEngine\Data\";
-        
-
         public static GameWorld GetWorld()
         {
             if (_world == null)
