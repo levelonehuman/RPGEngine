@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RPGEngine.Items;
+using RPGEngine.Quests;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,8 @@ namespace RPGEngine
 {
     public class Player : Entity
     {
-        private static Player player;                
+        public List<InventoryItem> Inventory;
+        public List<PlayerQuest> Quests;        
         public int Gold;        
         public int Experience
         {
@@ -21,9 +24,10 @@ namespace RPGEngine
                     OnPropertyChanged("Experience");
                 }
             }
-        }        
-        private int _experience;
-          
+        }
+
+        private static Player player;
+        private int _experience;          
         
         public static Player GetPlayer()
         {

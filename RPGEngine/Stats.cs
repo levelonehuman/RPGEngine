@@ -19,7 +19,24 @@ namespace RPGEngine
         //private void Stats_PropertyChanged(object sender, PropertyChangedEventArgs e)
         //{
         //            
-        //}        
+        //}
+        private const int MIN_HEALTH = 100;
+        private const int MAX_HEALTH = 12500;
+        
+        private const int MIN_DAMAGE = 5;
+        private const int MAX_DAMAGE = 130;
+        
+        private const int MIN_DEFENSE = 5;
+        private const int MAX_DEFENSE = 130;
+        
+        private const int HEALTH_PER_VITALITY_POINT = 3;
+        private const int DAMAGE_PER_STRENGTH_POINT = 3;
+        private const int DEFENSE_PER_RESISTANCE_POINT = 3;
+        
+        private const double MAX_RUN_SPEED = 0.25;
+        private const double MAX_ATTACK_SPEED = 1.0;
+        private const double MAX_LIFE_PER_HIT = 0.1;
+        private const double MAX_LIFE_PER_SEC = 0.1;
 
         //Primary stats
         public int Health
@@ -58,22 +75,22 @@ namespace RPGEngine
         //Bonus stats
         public double RunSpeed
         {
-            get { return Math.Min(_runSpeed, GameWorld.MAX_RUN_SPEED); }
+            get { return Math.Min(_runSpeed, MAX_RUN_SPEED); }
             set { _runSpeed = value; }
         }
         public double AttackSpeed
         {
-            get { return Math.Min(_attackSpeed, GameWorld.MAX_ATTACK_SPEED); }
+            get { return Math.Min(_attackSpeed, MAX_ATTACK_SPEED); }
             set { _attackSpeed = value; }
         }
         public double LifePerHit
         {
-            get { return Math.Min(_lifePerHit, GameWorld.MAX_LIFE_PER_HIT); }
+            get { return Math.Min(_lifePerHit, MAX_LIFE_PER_HIT); }
             set { _lifePerHit = value; }
         }
         public double LifePerSec
         {
-            get { return Math.Min(_lifePerSec, GameWorld.MAX_LIFE_PER_SEC); }
+            get { return Math.Min(_lifePerSec, MAX_LIFE_PER_SEC); }
             set { _lifePerSec = value; }
         }
 
@@ -99,24 +116,24 @@ namespace RPGEngine
 
         private int CalculateHealth(int level, EntityRole role)
         {
-            int baseHealth = GameWorld.GetValueForLevelWithModifier(level, GameWorld.MIN_HEALTH, GameWorld.MAX_HEALTH, role.HealthModifier);
-            int addedHealth = _vitality * GameWorld.HEALTH_PER_VITALITY_POINT;
+            int baseHealth = GameWorld.GetValueForLevelWithModifier(level, MIN_HEALTH, MAX_HEALTH, role.HealthModifier);
+            int addedHealth = _vitality * HEALTH_PER_VITALITY_POINT;
 
             return baseHealth + addedHealth;
         }
         
         private int CalculateDamage(int level, EntityRole role)
         {
-            int baseDamage = GameWorld.GetValueForLevelWithModifier(level, GameWorld.MIN_DAMAGE, GameWorld.MAX_DAMAGE, role.DamageModifier);
-            int addedDamage = _strength * GameWorld.DAMAGE_PER_STRENGTH_POINT;
+            int baseDamage = GameWorld.GetValueForLevelWithModifier(level, MIN_DAMAGE, MAX_DAMAGE, role.DamageModifier);
+            int addedDamage = _strength * DAMAGE_PER_STRENGTH_POINT;
 
             return baseDamage + addedDamage;
         }
 
         private int CalculateDefense(int level, EntityRole role)
         {
-            int baseDefense = GameWorld.GetValueForLevelWithModifier(level, GameWorld.MIN_DEFENSE, GameWorld.MAX_DEFENSE, role.DefenseModifier);
-            int addedDefense = _resistance * GameWorld.DEFENSE_PER_RESISTANCE_POINT;
+            int baseDefense = GameWorld.GetValueForLevelWithModifier(level, MIN_DEFENSE, MAX_DEFENSE, role.DefenseModifier);
+            int addedDefense = _resistance * DEFENSE_PER_RESISTANCE_POINT;
 
             return baseDefense + addedDefense;
         }

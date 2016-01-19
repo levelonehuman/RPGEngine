@@ -13,7 +13,14 @@ namespace RPGEngine
     /// Holds core functionality for both classes, and handles attacking/taking damage/healing/etc.
     /// </summary>
     public class Entity : INotifyPropertyChanged
-    {        
+    {
+        internal const double EFFECTIVE_DEFENSE = 0.8;
+        internal const double MIN_RAND_MOD = 0.5;
+        internal const double MAX_RAND_MOD = 2.0;
+
+        private const double MISS_CHANCE = 0.12;
+        
+        public int ID { get; set; } //Making this a base property in case merchants/other NPCs inherit from this class
         public string Name { get; set; }
         public Stats Stats { get; set; }
         public string Role { get; set; }
@@ -47,8 +54,8 @@ namespace RPGEngine
 
         private int _currentHealth;
         private int _level;
-        private int _minDamage { get { return (int)(this.Stats.Damage * GameWorld.MIN_RAND_MOD); } }
-        private int _maxDamage { get { return (int)(this.Stats.Damage * GameWorld.MAX_RAND_MOD); } }
+        private int _minDamage { get { return (int)(this.Stats.Damage * MIN_RAND_MOD); } }
+        private int _maxDamage { get { return (int)(this.Stats.Damage * MAX_RAND_MOD); } }
         protected double modifier { get { return Math.Max(this.Level / 2, 1); } }
         protected EntityRole _role;
 
@@ -114,7 +121,7 @@ namespace RPGEngine
 
             if (Missed() == false)
             {
-                int enemyDefense = (int)(enemy.Stats.Defense * GameWorld.EFFECTIVE_DEFENSE);
+                int enemyDefense = (int)(enemy.Stats.Defense * EFFECTIVE_DEFENSE);
                 int minDmg = Math.Max(_minDamage - enemyDefense, 0);
                 int maxDmg = Math.Max(_maxDamage - enemyDefense, 0);
 
@@ -126,7 +133,7 @@ namespace RPGEngine
 
         protected bool Missed()
         {
-            return RandomNumberGenerator.GetNumberBetween(1, 100) < (GameWorld.MISS_CHANCE * 100);
+            return RandomNumberGenerator.GetNumberBetween(1, 100) < (MISS_CHANCE * 100);
         }        
     }
 }
