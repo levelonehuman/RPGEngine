@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Weighted_Randomizer;
+using RPGEngine.Quests;
 
 namespace RPGEngine
 {
@@ -15,7 +16,10 @@ namespace RPGEngine
     public class GameWorld
     {        
         public Dictionary<int, int> LevelTable = new Dictionary<int, int>();        
-        public List<Enemy> EnemyList = new List<Enemy>();
+        public List<Enemy> EnemyList = new List<Enemy>();        
+        public List<BaseItem> ItemList = new List<BaseItem>();
+        public List<Quest> QuestList = new List<Quest>();
+
         public List<Enemy> SpawnedEnemies = new List<Enemy>();
 
         private static GameWorld _world;
@@ -24,42 +28,14 @@ namespace RPGEngine
 
         public const int MAX_LEVEL = 50;
         public const string ENEMY_FILE = "Enemy.json";
-
-        public const double MISS_CHANCE = 0.12;
-
+        public const string ITEM_FILE = "Item.json";
+        public const string QUEST_FILE = "Quest.json";
+        
         private const int MIN_XP_REQ = 1000;
         private const int MAX_XP_REQ = 1250000;
-
-        internal const int MIN_HEALTH = 100;
-        internal const int MAX_HEALTH = 12500;
-
-        internal const int MIN_DAMAGE = 5;
-        internal const int MAX_DAMAGE = 130;
-
-        internal const int MIN_DEFENSE = 5;
-        internal const int MAX_DEFENSE = 130;
-
-        internal const double EFFECTIVE_DEFENSE = 0.8;
-        internal const double MIN_RAND_MOD = 0.5;
-        internal const double MAX_RAND_MOD = 2.0;
-
-        internal const int MIN_XP_GRANTED = 12;
-        internal const int MAX_XP_GRANTED = 1200;
-
-        internal const int MIN_GOLD_GRANTED = 12;
-        internal const int MAX_GOLD_GRANTED = 1200;
-
-        internal const int MIN_ITEM_VALUE = 8;
-        internal const int MAX_ITEM_VALUE = 1000;
-
-        internal const int HEALTH_PER_VITALITY_POINT = 3;
-        internal const int DAMAGE_PER_STRENGTH_POINT = 3;
-        internal const int DEFENSE_PER_RESISTANCE_POINT = 3;
-
-        internal const double MAX_RUN_SPEED = 0.25;
-        internal const double MAX_ATTACK_SPEED = 1.0;
-        internal const double MAX_LIFE_PER_HIT = 0.1;
-        internal const double MAX_LIFE_PER_SEC = 0.1;
+                
+        //internal const int MIN_ITEM_VALUE = 8;
+        //internal const int MAX_ITEM_VALUE = 1000;        
 
         public static GameWorld GetWorld()
         {
@@ -71,15 +47,18 @@ namespace RPGEngine
             return _world;
         }
 
-        private GameWorld()
+        //When the GameWorld object is first created, read in all game data
+        private GameWorld() 
         {
             InitializeWorld();
-        }        
+        }
 
         private void InitializeWorld()
         {
             BuildLevelTable();
-            BuildEnemyList();            
+            BuildEnemyList();
+            //BuildItemList();
+            //BuildQuestList();        
         }
 
         private void BuildLevelTable()
@@ -95,6 +74,16 @@ namespace RPGEngine
         private void BuildEnemyList()
         {
             EnemyList = JsonHelpers.ReadFileToList<Enemy>(ENEMY_FILE);
+        }
+
+        private void BuildItemList()
+        {
+            ItemList = JsonHelpers.ReadFileToList<BaseItem>(ITEM_FILE);
+        }
+
+        private void BuildQuestList()
+        {
+            QuestList = JsonHelpers.ReadFileToList<Quest>(QUEST_FILE);
         }
 
         public static int GetValueForLevel(int level, int minValue, int maxValue)
