@@ -94,7 +94,7 @@ namespace EngineTests
 
         public Quest CreateTestQuest()
         {
-            int questID = 1;
+            Guid questID = Guid.NewGuid();
             string questName = "Test Quest";
             string questDescription = "Save the planet from the evil Voltron!";
             int minLevel = 1;
@@ -115,12 +115,12 @@ namespace EngineTests
             string stepDescription = "Venture out to The Lair of Voltron and kill him!";
 
             //Set the first enemy in the list to ID 1 (This can be removed once we start populating enemy IDs
-            GameWorld.GetWorld().EnemyList.First().ID = 1;
-
+            GameWorld.GetWorld().EnemyList.First().ID = Guid.NewGuid();
+            Guid enemyID = GameWorld.GetWorld().EnemyList.First().ID;
             //Create a step requirement
             List<EnemyRequiredForStep> stepKills = new List<EnemyRequiredForStep>();
             
-            EnemyRequiredForStep enemy = new EnemyRequiredForStep(1, 1);
+            EnemyRequiredForStep enemy = new EnemyRequiredForStep(enemyID, 1);
             stepKills.Add(enemy);
 
             QuestStep step = new QuestStep(stepName, stepDescription, stepKills: stepKills);
@@ -141,12 +141,13 @@ namespace EngineTests
 
         public List<QuestRewardItem> CreateRewardItemList()
         {
+            Guid itemGuid = Guid.NewGuid();
             //Create an item to reward and add it to the GameWorld's item list
-            BaseItem rewardItem = new BaseItem(1, "Vorpal Sword of Doom", 10000, true);
+            BaseItem rewardItem = new BaseItem(itemGuid, "Vorpal Sword of Doom", 10000, true);
             GameWorld.GetWorld().ItemList.Add(rewardItem);
 
             //Create a QuestRewardItem by ItemID
-            QuestRewardItem reward = new QuestRewardItem(1, 1, false);
+            QuestRewardItem reward = new QuestRewardItem(itemGuid, 1, false);
 
             //Add the item to a list
             List<QuestRewardItem> rewardItems = new List<QuestRewardItem>();

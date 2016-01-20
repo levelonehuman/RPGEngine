@@ -12,7 +12,7 @@ namespace RPGEngine
         public Enums.ArmorLocations Location;
 
         //Add stats to constructor
-        public EquipmentItem(int id, string name, int value, string armorLocation) : base(id, name, value, canEquip: true)
+        public EquipmentItem(Guid id, string name, int value, string armorLocation) : base(id, name, value, canEquip: true)
         {
             Location = GetArmorLocation(armorLocation);
         }

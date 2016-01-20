@@ -11,7 +11,7 @@ namespace RPGEngine.Items
         public BaseItem Item;
         public int Count;
 
-        public InventoryItem(int itemID, int count)
+        public InventoryItem(Guid itemID, int count)
         {
             this.Item = GameWorld.GetWorld().ItemList.Single(il => il.ID == itemID);
             this.Count = count;

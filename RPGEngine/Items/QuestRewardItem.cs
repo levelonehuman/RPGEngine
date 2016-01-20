@@ -12,7 +12,7 @@ namespace RPGEngine.Items
         public int Count { get; private set; }
         public bool IsChosenReward { get; private set; } //differentiate between auto-granted rewards and a single item chosen from a group.
 
-        public QuestRewardItem(int itemID, int count, bool isChosenReward)
+        public QuestRewardItem(Guid itemID, int count, bool isChosenReward)
         {
             this.Item = GameWorld.GetWorld().ItemList.Single(il => il.ID == itemID);
             this.Count = count;

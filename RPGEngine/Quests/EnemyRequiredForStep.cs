@@ -12,7 +12,7 @@ namespace RPGEngine.Quests
         public int RequiredKillCount { get; private set; }
         public int KilledByPlayer { get; set; }
 
-        public EnemyRequiredForStep(int enemyID, int killCount)
+        public EnemyRequiredForStep(Guid enemyID, int killCount)
         {
             this.EnemyToKill = GameWorld.GetWorld().EnemyList.Single(el => el.ID == enemyID);
             this.RequiredKillCount = killCount;

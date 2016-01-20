@@ -20,7 +20,7 @@ namespace RPGEngine
 
         private const double MISS_CHANCE = 0.12;
         
-        public int ID { get; set; } //Making this a base property in case merchants/other NPCs inherit from this class
+        public Guid ID { get; set; } //Making this a base property in case merchants/other NPCs inherit from this class
         public string Name { get; set; }
         public Stats Stats { get; set; }
         public string Role { get; set; }

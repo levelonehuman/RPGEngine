@@ -17,7 +17,7 @@ namespace RPGEngine.Quests
             get { return Quest.Steps.All(qs => qs.IsStepCompleted == true); }
         }
 
-        public PlayerQuest(int questID)
+        public PlayerQuest(Guid questID)
         {
             this.Quest = GameWorld.GetWorld().QuestList.Single(ql => ql.ID == questID);
         }

@@ -8,6 +8,6 @@ namespace RPGEngine.Items
 {
     public class QuestItem : BaseItem
     {
-        public QuestItem(int id, string name) : base(id, name, value: 0, canEquip: false) { }
+        public QuestItem(Guid id, string name) : base(id, name, value: 0, canEquip: false) { }
     }
 }

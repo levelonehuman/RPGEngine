@@ -13,7 +13,7 @@ namespace RPGEngine.Quests
     /// </summary>
     public class Quest
     {
-        public int ID { get; private set; }
+        public Guid ID { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }    
         public int MinimumLevel { get; private set; }
@@ -21,7 +21,7 @@ namespace RPGEngine.Quests
         public List<QuestStep> Steps { get; private set; }
         public QuestReward Reward { get; private set; }
                 
-        public Quest(int id)
+        public Quest(Guid id)
         {
             Quest _quest = GameWorld.GetWorld().QuestList.Single(ql => ql.ID == id);
 
@@ -34,7 +34,7 @@ namespace RPGEngine.Quests
             this.Reward = _quest.Reward;
         }
 
-        public Quest(int id, string name, string description, int minimumLevel, bool isRepeatable, List<QuestStep> steps, QuestReward reward)
+        public Quest(Guid id, string name, string description, int minimumLevel, bool isRepeatable, List<QuestStep> steps, QuestReward reward)
         {
             this.ID = id;
             this.Name = name;
